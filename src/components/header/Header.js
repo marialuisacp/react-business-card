@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
 import '../../styles/styles.scss';
 import './Header.scss';
 
 class Header extends Component {
   render() {
-    const { t } = this.props;
-
     return (
       <div id='header'>
         <div className='content'>
@@ -22,10 +18,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  t: PropTypes.func.isRequired,
-  classes: PropTypes.object
-};
 
 export default Header;

@@ -2,13 +2,15 @@
 
 #screen-list {
   background-image: linear-gradient($blue-gradient, $green-gradient);
+
   .carousel-container {
     position: relative;
-    height: 300px;
-    max-width: 960px;
+    background: #f00;
+    max-width: $content-width;
     margin: 0 auto;
     overflow: hidden;
     touch-action: pan-y;
+    margin-top: -150px;
   }
 
   .carousel-track {
@@ -18,7 +20,7 @@
 
   .carousel-card {
     flex: 0 0 100vw;
-    max-width: 960px;
+    max-width: $content-width - 100;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -32,10 +34,10 @@
   .carousel-card-inner {
     position: relative;
     flex-direction: column;
-    width: 290px;
-    height: 290px;
-    border-radius: 5px;
-    background: #0072bb;
+    // width: 290px;
+    height: auto;
+    // border-radius: 5px;
+    // background: #0072bb;
   }
 
   .carousel-title {

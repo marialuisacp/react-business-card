@@ -14,7 +14,7 @@ const data = range(0, 999).map(n => ({
 const queryPage = parseInt(window.location.search.slice(1))
 const startPage = queryPage ? clamp(queryPage, 0, data.length - 1) : 0
 
-const carouselWidth = clamp(window.innerWidth, 0, 960)
+const carouselWidth = clamp(window.innerWidth, 0, 900)
 const cardSize = carouselWidth
 
 class List extends Component {
@@ -84,9 +84,18 @@ class List extends Component {
   renderCard = (index, _, cursor) => {
     const { page } = this.state
     const item = data[page + index]
+    const alphabet = ['D', 'E', 'G', 'J'];
 
     return (
       <div key={index} className='carousel-card'>
+        <div className='alphabet'>
+          <ul>
+            {alphabet && alphabet.length
+              && alphabet.map((letter, k) => (
+                <li key={k}> {letter} </li>
+              ))}
+          </ul>
+        </div>
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
@@ -101,15 +110,17 @@ class List extends Component {
     return (
       <div id='screen-list' className='screen'>
         <Header></Header>
-        <TouchCarousel
-          ref={elt => { this.carousel = elt }}
-          component={CarouselContainer}
-          cardSize={cardSize}
-          cardCount={renderedData.length}
-          loop={false}
-          renderCard={this.renderCard}
-          defaultCursor={this.defaultCursor}
-        />
+        <div className='content'>
+          <TouchCarousel
+            ref={elt => { this.carousel = elt }}
+            component={CarouselContainer}
+            cardSize={cardSize}
+            cardCount={renderedData.length}
+            loop={false}
+            renderCard={this.renderCard}
+            defaultCursor={this.defaultCursor}
+          />
+        </div>
       </div>
     )
   }

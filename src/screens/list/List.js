@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
 import NonPassiveTouchTarget from '../../touch/NonPassiveTouchTarget'
 import TouchCarousel, { clamp, range } from '../../touch'
 import touchWithMouseHOC from '../../touch/TouchWithMouseHOC'
+
+import Header from '../../components/header/Header'
+
 import './List.scss'
 
 const data = range(0, 999).map(n => ({
@@ -97,7 +99,8 @@ class List extends Component {
     const { renderedData } = this.state
     const CarouselContainer = this.container
     return (
-      <React.StrictMode>
+      <div id='screen-list' className='screen'>
+        <Header></Header>
         <TouchCarousel
           ref={elt => { this.carousel = elt }}
           component={CarouselContainer}
@@ -107,7 +110,7 @@ class List extends Component {
           renderCard={this.renderCard}
           defaultCursor={this.defaultCursor}
         />
-      </React.StrictMode>
+      </div>
     )
   }
 }

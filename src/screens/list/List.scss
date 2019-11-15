@@ -1,48 +1,53 @@
-.carousel-container {
-  position: relative;
-  height: 300px;
-  max-width: 960px;
-  margin: 0 auto;
-  overflow: hidden;
-  touch-action: pan-y;
-}
+@import '../../styles/config';
 
-.carousel-track {
-  display: flex;
-  height: 100%;
-}
+#screen-list {
+  background-image: linear-gradient($blue-gradient, $green-gradient);
+  .carousel-container {
+    position: relative;
+    height: 300px;
+    max-width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
 
-.carousel-card {
-  flex: 0 0 100vw;
-  max-width: 960px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  color: white;
-  -webkit-tap-highlight-color: transparent;
-}
+  .carousel-track {
+    display: flex;
+    height: 100%;
+  }
 
-.carousel-card-inner {
-  position: relative;
-  flex-direction: column;
-  width: 290px;
-  height: 290px;
-  border-radius: 5px;
-  background: #0072bb;
-}
+  .carousel-card {
+    flex: 0 0 100vw;
+    max-width: 960px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-.carousel-title {
-  margin-top: 20px;
-  font-size: 1.5em;
-}
+  .carousel-card-inner {
+    position: relative;
+    flex-direction: column;
+    width: 290px;
+    height: 290px;
+    border-radius: 5px;
+    background: #0072bb;
+  }
 
-.carousel-text {
-  padding: 1em;
-  font-size: 14px;
-  white-space: pre-wrap;
-  text-align: left;
-  font-family: sans-serif;
+  .carousel-title {
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+
+  .carousel-text {
+    padding: 1em;
+    font-size: 14px;
+    white-space: pre-wrap;
+    text-align: left;
+    font-family: sans-serif;
+  }
 }

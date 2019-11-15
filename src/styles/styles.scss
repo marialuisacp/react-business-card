@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import 'config';
+
+html, body, #root, .screen {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #fff;
+}
+
+html * {
+  font-family: 'Lato', sans-serif;
+}
+
+.content {
+  max-width: $content-width;
+  display: block;
+  margin: 0 auto
+}

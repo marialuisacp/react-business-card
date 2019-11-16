@@ -6,6 +6,9 @@ html, body, #root, .screen {
   padding: 0;
   height: 100%;
   background: #fff;
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 html * {
@@ -16,5 +19,14 @@ html * {
 .content {
   max-width: $content-width;
   display: block;
-  margin: 0 auto
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media (max-width: 1080px) {
+  .content {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+  }
 }

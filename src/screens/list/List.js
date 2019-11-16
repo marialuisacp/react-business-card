@@ -5,87 +5,58 @@ import Header from '../../components/header/Header';
 import './List.scss';
 import '../../styles/styles.scss';
 import '../../styles/lib/react-carousel.es.css';
+import Alphabet from '../../components/alphabet/Alphabet';
 
 class List extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      letters: ['', 'D', 'E', 'G', 'J', 'L', 'P']
+    }
+    this.test = this.test.bind(this);
+    this.onDrag = this.test.bind(this);
+  }
+
+  test = () => {
+    console.log('vai para o proximo');
+  };
+
+  onDrag = (e) => {
+    console.log(e);
+  }
+
   render() {
+    const { letters } = this.state;
     return (
       <div className='screen' id='list-screen'>
         <Header />
-        <div className='content list'>
+        <Alphabet />
+        {/* <div className='content list'>
           <CarouselProvider
-            naturalSlideWidth={100}
+            naturalSlideWidth={130}
             naturalSlideHeight={150}
-            totalSlides={3}
-            visibleSlides={1}
+            totalSlides={7}
+            visibleSlides={3}
             touchEnabled={true}
             dragEnabled={true}
             infinite='true'
           >
-            <Slider>
-              <Slide className='slide' index={0}>
-                <div className='slide-item-page s1'>
-                  <div className='alphabet'>
-                    <div className='list-letters'>
-                      <Dot className='letter' slide={0}>
-                        <span></span>
-                      </Dot>
-                      <Dot className='letter' slide={0}>
-                        <span>D</span>
-                      </Dot>
-                      <ButtonNext className='letter'>
-                        <span>E</span>
-                      </ButtonNext>
-                    </div>
-                  </div>
-                  <p>
-                    Teste 1
-                  </p>
-                </div>
-              </Slide>
-              <Slide index={1}>
-                <div className='slide-item-page s2'>
-                  <div className='alphabet'>
-                    <div className='list-letters'>
-                      <ButtonBack className='letter'>
-                        <span>D</span>
-                      </ButtonBack>
-                      <Dot className='letter' slide={1}>
-                        <span>E</span>
-                      </Dot>
-                      <ButtonNext className='letter'>
-                        <span>G</span>
-                      </ButtonNext>
-                    </div>
-                  </div>
-                  <p>
-                    Teste 2
-                  </p>
-                </div>
-              </Slide>
-              <Slide index={2}>
-                <div className='slide-item-page s3'>
-                  <div className='alphabet'>
-                    <div className='list-letters'>
-                      <ButtonBack className='letter'>
-                        <span>G</span>
-                      </ButtonBack>
-                      <Dot className='letter' slide={1}>
-                        <span>J</span>
-                      </Dot>
-                      <ButtonNext className='letter'>
-                        <span>L</span>
-                      </ButtonNext>
-                    </div>
-                  </div>
-                  <p>
-                    Teste 3
-                  </p>
-                </div>
-              </Slide>
+            <Slider onDrag={(event) => this.onDrag(event)}>
+        {
+          letters && letters.length
+          && letters.map((item, key) => (
+            <Slide className='slide' key={key} index={key}>
+              <Dot className='letter' slide={(key + 1)}>
+                <span>{item}</span>
+                <span>{key}</span>
+              </Dot>
+            </Slide>
+          ))
+        }
             </Slider>
-          </CarouselProvider>
-        </div>
-      </div>
+          </CarouselProvider >
+        </div > */}
+      </div >
     );
   }
 }

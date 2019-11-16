@@ -1,0 +1,89 @@
+
+.container {
+  height: 130px;
+  width: 600px; /* meant to hold 3 items */
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.left-btn, .right-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  color: limeGreen;
+}
+
+.left-btn i, .right-btn i {
+ cursor: pointer; 
+}
+
+.left-btn {
+  top: 100px;
+  left: 50px;
+}
+
+.right-btn {
+  top: 100px;
+  right: 50px;
+}
+
+.item-carousel {
+  position: relative;
+  right: 0;
+  font-size: 0;
+  // margin-top: -150px;
+  width: 200%;
+  transform: translateX(-130px);
+}
+
+.item {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 130px;
+  width: 130px;
+  background-color: transparent;
+  border: none;
+  font-size: 36px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 164px;
+  user-select: none;
+  
+  &.active {
+    border: 3px solid black;
+  }
+}
+
+@media (max-width: 850px) {
+  .container {
+    width: 130px; /* meant to hold 2 items */
+  }
+}
+
+.slide-enter {
+  transform: translateX(0px);
+}
+
+list-letters {
+  display: flex;
+  width: 390px;
+
+  margin: 0 auto;
+  position: relative;
+
+  .letter {
+    display: inline-block;
+    border: none;
+    background: transparent;
+    width: 130px;
+    height: 130px;
+    outline: none;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .letter span {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 300;
+  }
+}

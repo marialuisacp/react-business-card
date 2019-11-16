@@ -39,14 +39,23 @@
         }
       }
 
-      .slide-item-page {
-        height: 100px;
-      }
-      .slide-item-page.s2 {
-
-      }
-      .slide-item-page.s2 {
-
+      .slide {
+        width: 130px;
+        display: inline-block;        
+        text-align: center;
+        margin: 0 auto;
+        .letter {
+          width: 130px;
+          height: 130px;
+          border: none;
+          outline: none;
+          background: transparent;
+        }
+        .letter span {
+          color: #fff;
+          font-size: 32px;
+          font-weight: 300;
+        }
       }
     }
   }

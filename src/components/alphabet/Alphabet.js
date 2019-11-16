@@ -14,13 +14,12 @@ class Alphabet extends Component {
     super(props);
     this.state = {
       slides: [
-        { order: 0, id: 1, text: "" },
-        { order: 1, id: 2, text: "D" },
-        { order: 2, id: 3, text: "E" },
-        { order: 3, id: 4, text: "G" },
-        { order: 4, id: 5, text: "J" },
-        { order: 5, id: 6, text: "L" },
-        { order: -1, id: 1, text: "P" },
+        { order: -1, id: 1, text: "" },
+        { order: 0, id: 2, text: "D" },
+        { order: 1, id: 3, text: "E" },
+        { order: 2, id: 4, text: "G" },
+        { order: 3, id: 5, text: "J" },
+        { order: 4, id: 6, text: "L" }
       ],
       slideCount: 3,
       sliding: false,
@@ -34,9 +33,8 @@ class Alphabet extends Component {
     let slidesCopy = {};
     if (!this.state.initPlaying) {
       slidesCopy = copyObject(this.state.slides);
-      slidesCopy = slidesCopy.filter((slide) => slide.text !== '')
+      slidesCopy[0].text = 'P';
     }
-
     this.setState((prevState) => {
       return {
         sliding: true,
@@ -88,17 +86,20 @@ class Alphabet extends Component {
     });
   };
 
-  render() {
-    const { slides, initPlaying, sliding, direction, visibleCenterLetter } = this.state;
-    const { letterCenter: letter, updateLetter, direction: lastDirection } = this.props;
-
-    if (lastDirection === 1 && letter !== visibleCenterLetter) {
-      this.handleNext();
-    } else {
-      if (lastDirection === -1 && letter !== visibleCenterLetter) {
+  componentDidUpdate(prevProps) {
+    const { letterCenter: letter, direction: lastDirection } = this.props;
+    if (prevProps.letterCenter !== letter) {
+      if (lastDirection === 1) {
+        this.handleNext();
+      } else if (lastDirection === -1) {
         this.handlePrev();
       }
     }
+  };
+
+  render() {
+    const { slides, initPlaying, sliding, direction } = this.state;
+    const { letterCenter: letter, updateLetter, direction: lastDirection } = this.props;
 
     const slideActionStyle = sliding
       ? (direction > 0

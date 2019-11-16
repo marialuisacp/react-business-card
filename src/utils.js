@@ -75,4 +75,8 @@ export const getNextLetter = (letter, direction) => {
   return result;
 };
 
+export const getDataByLetter = (letter) => (
+  data.find((l) => l.letter === letter)
+);
+
 export const dataPeople = data;

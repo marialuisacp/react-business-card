@@ -1,7 +1,10 @@
 #header {
   $column-center-width: 276px;
   $logo-width: 150px;
+  
+  position: relative;
   width: 100%;
+  // z-index: 9;
 
   .logo {
     width: $logo-width;
@@ -30,6 +33,19 @@
       background-repeat: no-repeat;
       background-size: 100%;
       background-position: center top;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  #header {
+    .lines {
+      .column-border {
+        width: 20%;
+      }
+      .column-center {
+        width: 60%;
+      }
     }
   }
 }

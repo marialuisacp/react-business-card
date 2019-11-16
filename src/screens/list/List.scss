@@ -1,55 +1,74 @@
 @import '../../styles/config';
 
-#screen-list {
+#list-screen {
   background-image: linear-gradient($blue-gradient, $green-gradient);
 
-  .carousel-container {
-    position: relative;
-    background: #f00;
-    max-width: $content-width;
-    margin: 0 auto;
-    overflow: hidden;
-    touch-action: pan-y;
-    margin-top: -150px;
-  }
+  .content.list {
 
-  .carousel-track {
-    display: flex;
-    height: 100%;
-  }
+    .carousel {
+      position: relative;
+      margin-top: -150px;
+     
+      .alphabet {
+        height: 150px;
+        display: block;
+        text-align: center;
 
-  .carousel-card {
-    flex: 0 0 100vw;
-    max-width: $content-width - 100;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    -webkit-tap-highlight-color: transparent;
-  }
+        .list-letters {
+          display: flex;
+          width: 390px;
 
-  .carousel-card-inner {
-    position: relative;
-    flex-direction: column;
-    // width: 290px;
-    height: auto;
-    // border-radius: 5px;
-    // background: #0072bb;
-  }
+          margin: 0 auto;
+          position: relative;
 
-  .carousel-title {
-    margin-top: 20px;
-    font-size: 1.5em;
-  }
+          .letter {
+            display: inline-block;
+            border: none;
+            background: transparent;
+            width: 130px;
+            height: 130px;
+            outline: none;
+            text-align: center;
+            margin: 0 auto;
+          }
+          .letter span {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 300;
+          }
+        }
+      }
 
-  .carousel-text {
-    padding: 1em;
-    font-size: 14px;
-    white-space: pre-wrap;
-    text-align: left;
-    font-family: sans-serif;
+      .slide-item-page {
+        height: 100px;
+      }
+      .slide-item-page.s2 {
+
+      }
+      .slide-item-page.s2 {
+
+      }
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  #list-screen {
+    .content.list {
+      .carousel {
+        .alphabet {
+          height: 120px;
+          .list-letters {
+            width: 100%;
+            .letter {
+              height: 110px;
+            }
+            .letter span{
+              font-size: 28px;
+            }
+          }
+        }
+      }
+    }
   }
 }

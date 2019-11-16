@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { copyObject } from '../../utils';
+import { copyObject, getNextLetter } from '../../utils';
+
+import { updateLetter } from '../../actions';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import './Alphabet.scss';
 import '../../styles/styles.scss';
@@ -10,7 +14,6 @@ class Alphabet extends Component {
     super(props);
     this.state = {
       slides: [
-
         { order: 0, id: 1, text: "" },
         { order: 1, id: 2, text: "D" },
         { order: 2, id: 3, text: "E" },
@@ -22,26 +25,12 @@ class Alphabet extends Component {
       slideCount: 3,
       sliding: false,
       direction: 0,
-      currentLetter: 2,
+      visibleCenterLetter: 'D',
       initPlaying: false
     };
   }
 
-  updateCurrentStep = (current, value) =>
-    Math.abs((current + value) % 3);
-
-  handleChangeStep = (id) => {
-    const { currentLetter } = this.state;
-    // console.log(this.state.currentLetter);
-    if (id < currentLetter) {
-      this.handlePrev()
-    } else if (id > 2) {
-      this.handleNext()
-    }
-  };
-
   handleNext = () => {
-    console.log(this.state.currentLetter);
     let slidesCopy = {};
     if (!this.state.initPlaying) {
       slidesCopy = copyObject(this.state.slides);
@@ -52,7 +41,7 @@ class Alphabet extends Component {
       return {
         sliding: true,
         direction: 1,
-        currentLetter: this.updateCurrentStep(prevState.currentLetter, 1),
+        visibleCenterLetter: getNextLetter(prevState.visibleCenterLetter, 1),
         initPlaying: true,
         slides: Object.keys(slidesCopy).length ? slidesCopy : prevState.slides
       }
@@ -77,12 +66,11 @@ class Alphabet extends Component {
   };
 
   handlePrev = () => {
-    console.log(this.state.currentLetter);
     this.setState((prevState) => {
       return {
         sliding: true,
         direction: -1,
-        currentLetter: this.updateCurrentStep(prevState.currentLetter, -1)
+        visibleCenterLetter: getNextLetter(prevState.visibleCenterLetter, -1),
       }
     }, () => {
       setTimeout(() => {
@@ -101,15 +89,23 @@ class Alphabet extends Component {
   };
 
   render() {
-    const { slides, currentLetter, initPlaying, sliding, direction } = this.state;
-    const { letterCenter: letter } = this.props;
+    const { slides, initPlaying, sliding, direction, visibleCenterLetter } = this.state;
+    const { letterCenter: letter, updateLetter, direction: lastDirection } = this.props;
+
+    if (lastDirection === 1 && letter !== visibleCenterLetter) {
+      this.handleNext();
+    } else {
+      if (lastDirection === -1 && letter !== visibleCenterLetter) {
+        this.handlePrev();
+      }
+    }
 
     const slideActionStyle = sliding
-      ? direction > 0
-      && {
-        transform: "translateX(-130px)",
-        transition: "transform 500ms ease-in"
-      }
+      ? (direction > 0
+        && {
+          transform: "translateX(-130px)",
+          transition: "transform 500ms ease-in"
+        })
       ||
       {
         transform: "translateX(130px)",
@@ -125,12 +121,12 @@ class Alphabet extends Component {
             style={slideActionStyle}
           >
             {slides && slides.length && slides.map(({ order, id, text }, idx) => {
-              return <div key={order} className="item">{text}</div>;
+              return <div key={idx} className="item">{text}</div>;
             })}
           </div>
-          {initPlaying && <div className="left-btn btn" onClick={this.handlePrev}>
-          </div> || ''}
-          <div className="right-btn btn" onClick={this.handleNext}>
+          {(initPlaying && <div className="left-btn btn" onClick={() => updateLetter(getNextLetter(letter, -1), -1)}>
+          </div>) || ''}
+          <div className="right-btn btn" onClick={() => updateLetter(getNextLetter(letter, 1), 1)}>
           </div>
         </div>
       </div>
@@ -138,8 +134,12 @@ class Alphabet extends Component {
   }
 };
 
-Alphabet.propTypes = {
-  letterCenter: PropTypes.string
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ updateLetter }, dispatch);
 
-export default Alphabet;
+const mapStateToProps = store => ({
+  letterCenter: store.letterState.currentLetter,
+  direction: store.letterState.direction,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Alphabet);

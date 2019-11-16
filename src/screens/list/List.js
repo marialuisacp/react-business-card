@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { CarouselProvider, Dot, ButtonNext, ButtonBack, Slide, Slider } from 'pure-react-carousel';
 import Header from '../../components/header/Header';
+
+import { updateLetter } from '../../actions';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import './List.scss';
 import '../../styles/styles.scss';
@@ -19,6 +23,7 @@ class List extends Component {
   }
 
   render() {
+    const { currentLetter } = this.props;
     const { data } = this.state;
     const dataPeopleByLetter = {
       current: data[1],
@@ -28,11 +33,18 @@ class List extends Component {
     return (
       <div className='screen' id='list-screen'>
         <Header />
-        <Alphabet />
+        <Alphabet letterCenter={currentLetter} />
         <SwipeList data={dataPeopleByLetter} />
       </div >
     );
   }
 }
 
-export default List;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ updateLetter }, dispatch);
+
+const mapStateToProps = store => ({
+  currentLetter: store.letterState.currentLetter
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

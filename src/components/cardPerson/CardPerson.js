@@ -10,7 +10,7 @@ const CardPerson = ({ person }) => {
       <div className='circle'></div>
       {person && person.name ?
         <div className='card'>
-          <div className='avatar' style={{ 'background-image': 'url(' + person.image + ')' }}></div>
+          <div className='avatar' style={{ backgroundImage: 'url(' + person.image + ')' }}></div>
           <div className='info'>
             <p className='title'>{person.name}</p>
             <p>{person.office}</p>
@@ -25,7 +25,7 @@ const CardPerson = ({ person }) => {
 }
 
 CardPerson.propTypes = {
-  person: PropTypes.arrayOf(PropTypes.object)
+  person: PropTypes.object
 };
 
 export default CardPerson;

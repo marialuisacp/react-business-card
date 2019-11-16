@@ -1,6 +1,4 @@
-export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
-
-export const dataPeople = [
+const data = [
   {
     letter: 'D',
     people: [{
@@ -60,3 +58,21 @@ export const dataPeople = [
     }]
   }
 ];
+
+export const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
+
+export const getNextLetter = (letter, direction) => {
+  let result = letter;
+  data.forEach((l, k) => {
+    if (l.letter === letter) {
+      if (direction === 1) {
+        result = k !== (data.length - 1) ? data[k + 1].letter : data[0].letter;
+      } else if (direction === -1) {
+        result = k !== 0 ? data[k - 1].letter : data[(data.length - 1)].letter;
+      }
+    }
+  })
+  return result;
+};
+
+export const dataPeople = data;

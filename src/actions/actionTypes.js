@@ -1,0 +1,1 @@
+export const UPDATE_LETTER = 'UPDATE_LETTER';

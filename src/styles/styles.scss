@@ -5,15 +5,20 @@ html, body, #root, .screen {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #fff;
-  overflow: hidden;
   max-width: 100%;
   box-sizing: border-box;
 }
 
+body {
+  background-image: linear-gradient($blue-gradient, $green-gradient);
+}
+
 html * {
   font-family: 'Lato', sans-serif;
-  font-weight: lighter;
+}
+
+.screen  {
+  overflow-y: scroll;
 }
 
 .content {

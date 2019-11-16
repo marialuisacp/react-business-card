@@ -9,7 +9,10 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "react-spring": "^7.1.0"
+    "react-spring": "^7.1.0",
+    "react-swipe": "^6.0.4",
+    "react-swipe-events": "^1.0.3",
+    "swipe-js-iso": "^2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

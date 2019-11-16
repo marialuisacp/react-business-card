@@ -1,31 +1,60 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { copyObject } from '../../utils';
 
 import './Alphabet.scss';
 import '../../styles/styles.scss';
 
-class Alphabet extends React.Component {
+class Alphabet extends Component {
   constructor(props) {
     super(props);
     this.state = {
       slides: [
-        { order: -1, text: "D" },
-        { order: 0, text: "E" },
-        { order: 1, text: "G" },
-        { order: 2, text: "J" },
-        { order: 3, text: "L" },
-        { order: 4, text: "P" }
+
+        { order: 0, id: 1, text: "" },
+        { order: 1, id: 2, text: "D" },
+        { order: 2, id: 3, text: "E" },
+        { order: 3, id: 4, text: "G" },
+        { order: 4, id: 5, text: "J" },
+        { order: 5, id: 6, text: "L" },
+        { order: -1, id: 1, text: "P" },
       ],
       slideCount: 3,
       sliding: false,
-      direction: 0
+      direction: 0,
+      currentLetter: 2,
+      initPlaying: false
     };
   }
 
+  updateCurrentStep = (current, value) =>
+    Math.abs((current + value) % 3);
+
+  handleChangeStep = (id) => {
+    const { currentLetter } = this.state;
+    // console.log(this.state.currentLetter);
+    if (id < currentLetter) {
+      this.handlePrev()
+    } else if (id > 2) {
+      this.handleNext()
+    }
+  };
+
   handleNext = () => {
+    console.log(this.state.currentLetter);
+    let slidesCopy = {};
+    if (!this.state.initPlaying) {
+      slidesCopy = copyObject(this.state.slides);
+      slidesCopy = slidesCopy.filter((slide) => slide.text !== '')
+    }
+
     this.setState((prevState) => {
-      console.log(prevState);
       return {
-        sliding: true, direction: 1
+        sliding: true,
+        direction: 1,
+        currentLetter: this.updateCurrentStep(prevState.currentLetter, 1),
+        initPlaying: true,
+        slides: Object.keys(slidesCopy).length ? slidesCopy : prevState.slides
       }
     },
       () => {
@@ -48,23 +77,23 @@ class Alphabet extends React.Component {
   };
 
   handlePrev = () => {
-    // always have a previous slide beforehand
-    this.setState({ sliding: true, direction: -1 }, () => {
+    console.log(this.state.currentLetter);
+    this.setState((prevState) => {
+      return {
+        sliding: true,
+        direction: -1,
+        currentLetter: this.updateCurrentStep(prevState.currentLetter, -1)
+      }
+    }, () => {
       setTimeout(() => {
         this.setState((prevState) => {
           let slides = [...prevState.slides];
-
-          // pop off last slide to attach another one
           let lastSlide = slides.pop();
-          // set its order to -1
           lastSlide = { ...lastSlide, order: -1 };
-          // sync order of slides
           slides = slides.map(s => {
             return { ...s, order: s.order + 1 };
           });
-          // add popped slide back on
           slides.unshift(lastSlide);
-
           return { slides, sliding: false };
         });
       }, 500);
@@ -72,39 +101,45 @@ class Alphabet extends React.Component {
   };
 
   render() {
-    const { slides, slideCount, sliding, direction } = this.state;
+    const { slides, currentLetter, initPlaying, sliding, direction } = this.state;
+    const { letterCenter: letter } = this.props;
+
     const slideActionStyle = sliding
       ? direction > 0
       && {
-        transform: "translateX(-260px)",
+        transform: "translateX(-130px)",
         transition: "transform 500ms ease-in"
       }
       ||
       {
-        transform: "translateX(0px)",
+        transform: "translateX(130px)",
         transition: "transform 500ms ease-in"
       }
       : {};
 
     return (
-      <div>
-        <div className="left-btn" onClick={this.handlePrev}>
-          <i className="fa fa-arrow-left fa-3x"></i>
-        </div>
-        <div
-          className="item-carousel"
-          style={slideActionStyle}
-        >
-          {slides.map(({ order, text }, idx) => {
-            return <div key={order} className="item">{text}</div>;
-          })}
-        </div>
-        <div className="right-btn" onClick={this.handleNext}>
-          <i className="fa fa-arrow-right fa-3x"></i>
+      <div id="alphabet" className='content'>
+        <div className='list-letters'>
+          <div
+            className="item-carousel"
+            style={slideActionStyle}
+          >
+            {slides && slides.length && slides.map(({ order, id, text }, idx) => {
+              return <div key={order} className="item">{text}</div>;
+            })}
+          </div>
+          {initPlaying && <div className="left-btn btn" onClick={this.handlePrev}>
+          </div> || ''}
+          <div className="right-btn btn" onClick={this.handleNext}>
+          </div>
         </div>
       </div>
     );
   }
+};
+
+Alphabet.propTypes = {
+  letterCenter: PropTypes.string
 };
 
 export default Alphabet;

@@ -25,7 +25,8 @@
     "build": "webpack --mode production",
     "test": "jest",
     "jest": "jest --watch",
-    "lint": "eslint ./src/**/*.js"
+    "lint": "eslint ./src/**/*.js",
+    "coverage": "jest --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

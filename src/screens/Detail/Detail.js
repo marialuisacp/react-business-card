@@ -11,7 +11,6 @@ class Detail extends Component {
 
   componentWillMount() {
     const hasParam = (this.props.location.state && this.props.location.state.data);
-
     if (!hasParam) {
       this.goToBack();
     }

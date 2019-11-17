@@ -1,5 +1,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   output: {
@@ -47,6 +49,18 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'app')
+    ],
+    extensions: ['.js', '.json', '.jsx', '.css'],
+    alias: {
+      'module': 'new-module',
+      'only-module$': 'new-module',
+      'module': path.resolve(__dirname, 'app/third/module.js'),
+    }
+  },
   devServer: {
     historyApiFallback: true,
   },
@@ -57,6 +71,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'src/assets', to: 'assets' }
-    ])
+    ]),
+    new CleanWebpackPlugin(),
   ]
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../../components/header/Header';
+import Header from '../../components/Header/Header';
 import { updateLetter } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import './List.scss';
 import '../../assets/styles/styles.scss';
 
-import Alphabet from '../../components/alphabet/Alphabet';
-import SwipeList from '../../components/swipeList/SwipeList';
+import Alphabet from '../../components/Alphabet/Alphabet';
+import SwipeList from '../../components/SwipeList/SwipeList';
 import { dataPeople } from '../../utils';
 
 class List extends Component {

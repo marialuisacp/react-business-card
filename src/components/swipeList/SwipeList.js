@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { updateLetter } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ListPeople from '../listPeople/ListPeople';
+import PeopleList from '../PeopleList/PeopleList';
 
 import './SwipeList.scss';
 import '../../assets/styles/styles.scss';
@@ -53,7 +53,7 @@ class SwipeList extends Component {
             {data && data.length &&
               data.map((list, k) => (
                 <div key={k}>
-                  <ListPeople data={list.people} />
+                  <PeopleList data={list.people} />
                 </div>
               ))}
           </ReactSwipe>

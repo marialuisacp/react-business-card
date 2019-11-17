@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CardPerson from '../cardPerson/CardPerson';
+import CardPerson from '../PersonCard/PersonCard';
 import { withRouter } from "react-router-dom";
 
-import './ListPeople.scss';
+import './PeopleList.scss';
 import '../../assets/styles/styles.scss';
 
-class ListPeople extends Component {
+class PeopleList extends Component {
   constructor(props) {
     super(props);
     this.goToDetails = this.goToDetails.bind(this);
@@ -38,8 +38,8 @@ class ListPeople extends Component {
   }
 }
 
-ListPeople.propTypes = {
+PeopleList.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default withRouter(ListPeople);
+export default withRouter(PeopleList);

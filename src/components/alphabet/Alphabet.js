@@ -22,7 +22,7 @@ class Alphabet extends Component {
       slideCount: 3,
       sliding: false,
       direction: 0,
-      visibleCenterLetter: 'D',
+      selectedLetter: 'D',
       initPlaying: false
     };
   }
@@ -37,7 +37,7 @@ class Alphabet extends Component {
       return {
         sliding: true,
         direction: 1,
-        visibleCenterLetter: getNextLetter(prevState.visibleCenterLetter, 1),
+        selectedLetter: getNextLetter(prevState.selectedLetter, 1),
         initPlaying: true,
         slides: Object.keys(slidesCopy).length ? slidesCopy : prevState.slides
       }
@@ -66,7 +66,7 @@ class Alphabet extends Component {
       return {
         sliding: true,
         direction: -1,
-        visibleCenterLetter: getNextLetter(prevState.visibleCenterLetter, -1),
+        selectedLetter: getNextLetter(prevState.selectedLetter, -1),
       }
     }, () => {
       setTimeout(() => {

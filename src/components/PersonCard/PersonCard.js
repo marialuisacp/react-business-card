@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './CardPerson.scss';
+import './PersonCard.scss';
 import '../../assets/styles/styles.scss';
 
-const CardPerson = ({ person }) => {
+const PersonCard = ({ person }) => {
   return (
     <div className='card-person card-info'>
       <div className='circle'></div>
@@ -24,8 +24,8 @@ const CardPerson = ({ person }) => {
   );
 }
 
-CardPerson.propTypes = {
+PersonCard.propTypes = {
   person: PropTypes.object
 };
 
-export default CardPerson;
+export default PersonCard;

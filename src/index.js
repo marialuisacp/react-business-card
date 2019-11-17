@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from "react-router-dom";
 
-import List from './screens/list/List';
-import Detail from './screens/detail/Detail';
+import List from './screens/List/List';
+import Detail from './screens/Detail/Detail';
 
 import { Provider } from 'react-redux';
 import { Store } from './store';

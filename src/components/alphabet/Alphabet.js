@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { copyObject, getNextLetter } from '../../utils';
-
 import { updateLetter } from '../../actions';
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -89,6 +87,7 @@ class Alphabet extends Component {
   componentDidUpdate(prevProps) {
     const { letterCenter: letter, direction: lastDirection } = this.props;
     if (prevProps.letterCenter !== letter) {
+      console.log('trocou');
       if (lastDirection === 1) {
         this.handleNext();
       } else if (lastDirection === -1) {
@@ -99,7 +98,7 @@ class Alphabet extends Component {
 
   render() {
     const { slides, initPlaying, sliding, direction } = this.state;
-    const { letterCenter: letter, updateLetter, direction: lastDirection } = this.props;
+    const { letterCenter: letter, updateLetter } = this.props;
 
     const slideActionStyle = sliding
       ? (direction > 0

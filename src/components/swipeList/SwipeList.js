@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactSwipe from 'react-swipe';
 import PropTypes from 'prop-types';
-
+import { updateLetter } from '../../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import ListPeople from '../listPeople/ListPeople';
 
 import './SwipeList.scss';
@@ -10,7 +12,10 @@ import '../../styles/styles.scss';
 class SwipeList extends Component {
   constructor(props) {
     super(props);
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
   }
+
   next() {
     this.reactSwipe.next();
   }
@@ -20,8 +25,9 @@ class SwipeList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { action, data } = this.props;
-    if (data !== prevProps.data) {
+    const { action, letterCenter } = this.props;
+
+    if (letterCenter !== prevProps.letterCenter) {
       if (action === 'next') {
         this.next();
       } else if (action === 'prev') {
@@ -29,29 +35,28 @@ class SwipeList extends Component {
       }
     }
   }
+
   render() {
     const { data } = this.props;
-
     return (
       <div className='component' id='swipe-list-component'>
         <div>
           <ReactSwipe
             className="carousel"
-            swipeOptions={{ continuous: true, speed: 550 }}
+            swipeOptions={{
+              continuous: true,
+              speed: 700,
+              disableScroll: true
+            }}
             ref={el => (this.reactSwipe = el)}
           >
-            <div>
-              <ListPeople data={data.prev.people} />
-            </div>
-            <div>
-              <ListPeople data={data.current.people} />
-            </div>
-            <div>
-              <ListPeople data={data.next.people} />
-            </div>
+            {data && data.length &&
+              data.map((list, k) => (
+                <div key={k}>
+                  <ListPeople data={list.people} />
+                </div>
+              ))}
           </ReactSwipe>
-          {/* <button onClick={() => reactSwipeEl.next()}>Next</button>
-          <button onClick={() => reactSwipeEl.prev()}>Previous</button> */}
         </div>
       </div >
     );
@@ -59,8 +64,12 @@ class SwipeList extends Component {
 }
 
 SwipeList.propTypes = {
-  data: PropTypes.object,
-  action: PropTypes.string
+  data: PropTypes.arrayOf(PropTypes.object),
+  action: PropTypes.string,
+  letterCenter: PropTypes.string
 };
 
-export default SwipeList;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ updateLetter }, dispatch);
+
+export default connect(mapDispatchToProps)(SwipeList);

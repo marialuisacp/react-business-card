@@ -2,7 +2,6 @@
   .list-letters {
     display: flex;
     width: 390px;
-
     margin: 0 auto;
     position: relative;
     margin-top: -174px;
@@ -48,12 +47,21 @@
   }
 }
 
-@media (max-width: 850px) {
-  .container {
-    width: 200px; /* meant to hold 2 items */
-  }
-}
-
 .slide-enter {
   transform: translateX(0px);
+}
+
+@media (max-width: 408px) {
+  #alphabet {
+    .list-letters {
+      width: 100%;
+      margin-top: -184px;
+      .item-carousel {
+        .item {
+          width: 33.33333333%;
+          font-size: 24px;
+        }
+      }
+    }
+  }
 }

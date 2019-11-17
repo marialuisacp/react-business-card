@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import CardPerson from '../cardPerson/CardPerson';
 
 import './ListPeople.scss';
 import '../../styles/styles.scss';
 
 class ListPeople extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { data } = this.props;

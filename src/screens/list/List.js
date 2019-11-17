@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../components/header/Header';
-
 import { updateLetter } from '../../actions';
-import { getNextLetter, getDataByLetter } from '../../utils';
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -29,44 +26,20 @@ class List extends Component {
     }
   }
 
-  getDataList = () => {
-    const { direction, currentLetter } = this.props;
-    const { dataPeopleByLetter } = this.state;
-
-    const dataPrev = getDataByLetter(getNextLetter(currentLetter, -1));
-    const dataNext = getDataByLetter(getNextLetter(currentLetter, 1));
-    const dataCurrent = getDataByLetter(currentLetter);
-
-    const dataLetter = (direction === 1)
-      ? {
-        current: dataPrev,
-        prev: dataPrev,
-        next: dataCurrent
-      } : {
-        current: dataPeopleByLetter.prev,
-        prev: dataPeopleByLetter.prev,
-        next: dataPeopleByLetter.current
-      };
-
-    this.setState({ dataPeopleByLetter: dataLetter, action: direction === 1 ? 'next' : 'prev' });
-  };
-
-  componentDidUpdate(prevProps) {
-    const { currentLetter } = this.props;
-    if (prevProps.currentLetter != currentLetter) {
-      this.getDataList()
-    }
-  };
-
   render() {
-    const { currentLetter } = this.props;
-    const { dataPeopleByLetter, action } = this.state;
-    console.log(action);
+    const { currentLetter, direction } = this.props;
+    const { data } = this.state;
+
     return (
       <div className='screen' id='list-screen'>
-        <Header />
-        <Alphabet letterCenter={currentLetter} />
-        <SwipeList action={action} data={dataPeopleByLetter} />
+        <div className='content'>
+          <Header />
+          <Alphabet letterCenter={currentLetter} />
+          <SwipeList
+            action={(direction === 1) ? 'next' : 'prev'}
+            data={data}
+            letterCenter={currentLetter} />
+        </div>
       </div >
     );
   }

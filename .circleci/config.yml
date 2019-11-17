@@ -1,0 +1,28 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: ~/react-business-card-building
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Run ESLint
+          command: npm run lint
+      - run:
+          name: Run Snapshot Tests
+          command: npm run test
+      - run:
+          name: Firebase Deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
+
+

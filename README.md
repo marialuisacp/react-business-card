@@ -5,7 +5,7 @@
 
 ### About this project
 
-In the digital context, new corporate business card formats are required. In this project, a corporate digital card template was implemented using [https://reactjs.org/](React.js).
+In the digital context, new corporate business card formats are required. In this project, a corporate digital card template was implemented using [React.js](https://reactjs.org/).
 
 Here's a presentation of how the project is:
 

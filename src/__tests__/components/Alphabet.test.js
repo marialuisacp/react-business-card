@@ -1,13 +1,31 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import Alphabet from '../../components/Alphabet/Alphabet';
+import { Provider } from 'react-redux'
 
-test('Component Alphabet should render correctly', () => {
-  const component = renderer.create(
-    <Alphabet />
-  );
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
+describe('Alphabet', () => {
+  it('renders without crashing given the required props', () => {
+    const props = {
+      letterCenter: 'D',
+      dispatch: jest.fn(),
+      direction: 1
+    }
+
+    const store = mockStore({
+      currentLetter: 'D',
+      direction: 0
+    })
+
+    const wrapper = shallow(<Provider store={store}>
+      <Alphabet {...props} />
+    </Provider>)
+    expect(toJson(wrapper)).toMatchSnapshot()
+  })
+})

@@ -4,7 +4,7 @@ import './styles/styles.scss';
 import * as serviceWorker from './serviceWorker';
 
 import List from './screens/list/List';
-import Item from './screens/item/Item';
+import Detail from './screens/detail/Detail';
 import { HashRouter, Route, Switch } from "react-router-dom";
 
 import { Provider } from 'react-redux';
@@ -19,7 +19,7 @@ ReactDOM.render(
     <HashRouter basename='/' history={history}>
       <Switch>
         <Route exact path="/" component={List} />
-        <Route path="/letter" component={Item} />
+        <Route path="/letter" component={Detail} />
       </Switch>
     </HashRouter>
   </Provider>

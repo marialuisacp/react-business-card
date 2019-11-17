@@ -24,6 +24,7 @@
     "dev": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
     "test": "jest",
+    "jest": "jest --watch",
     "lint": "eslint ./src/**/*.js"
   },
   "eslintConfig": {

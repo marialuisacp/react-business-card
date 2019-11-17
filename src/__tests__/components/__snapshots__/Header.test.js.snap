@@ -1,39 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Header should render correctly 1`] = `
-<div
-  id="header"
->
-  <div
-    className="content"
-  >
-    <img
-      alt="Logo do projeto"
-      className="logo"
-      src="assets/images/logo.png"
-    />
-  </div>
-  <div
-    className="lines"
-  >
-    <div
-      className="column column-border column-left"
-    />
-    <div
-      className="column column-center"
-      style={
-        Object {
-          "backgroundImage": "url(assets/images/lines.png)",
-        }
-      }
-    />
-    <div
-      className="column column-border"
-    />
-  </div>
-</div>
-`;
-
 exports[`Header Component Header should render correctly 1`] = `
 <div
   id="header"

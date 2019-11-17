@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './CardPerson.scss';
-import '../../styles/styles.scss';
+import '../../assets/styles/styles.scss';
 
 const CardPerson = ({ person }) => {
   return (

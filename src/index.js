@@ -10,7 +10,7 @@ import { Store } from './store';
 
 import { createBrowserHistory } from 'history';
 
-import './styles/styles.scss';
+import './assets/styles/styles.scss';
 
 const history = createBrowserHistory();
 

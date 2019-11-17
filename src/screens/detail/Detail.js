@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 
-import '../../styles/styles.scss';
+import '../../assets/styles/styles.scss';
 import './Detail.scss';
 
 class Detail extends Component {
@@ -41,7 +41,7 @@ class Detail extends Component {
           <div className='card-company'>
             <div className='info-superior'>
               <div className='logo'>
-                <img alt='logo da empresa' src='/images/logo.png' />
+                <img alt='logo da empresa' src='./assets/images/logo.png' />
               </div>
               <div className='phones'>
                 <p> 31 | 9.9147-8701 </p>
@@ -54,7 +54,7 @@ class Detail extends Component {
             </div>
           </div>
           <div className='card-qrcode'>
-            <img alt='qrcode' src='/images/qrcode.png' />
+            <img alt='qrcode' src='./assets/images/qrcode.png' />
           </div>
         </div>
       </div>

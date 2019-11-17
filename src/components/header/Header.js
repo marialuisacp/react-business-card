@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/styles.scss';
+import '../../assets/styles/styles.scss';
 import './Header.scss';
 
 class Header extends Component {
@@ -7,11 +7,11 @@ class Header extends Component {
     return (
       <div id='header'>
         <div className='content'>
-          <img alt='Logo do projeto' src='../../src/assets/images/logo.png' className='logo' />
+          <img alt='Logo do projeto' src='assets/images/logo.png' className='logo' />
         </div>
         <div className="lines">
           <div className='column column-border column-left'></div>
-          <div className='column column-center'></div>
+          <div className='column column-center' style={{ backgroundImage: 'url(assets/images/lines.png)' }}></div>
           <div className='column column-border'></div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   output: {
@@ -43,20 +44,6 @@ module.exports = {
             loader: 'file-loader',
           },
         ],
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'babel-loader'
-          },
-          {
-            loader: 'react-svg-loader',
-            options: {
-              jsx: true
-            }
-          }
-        ]
       }
     ]
   },
@@ -67,6 +54,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: 'src/assets', to: 'assets' }
+    ])
   ]
 };

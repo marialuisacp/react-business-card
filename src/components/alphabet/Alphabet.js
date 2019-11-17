@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import './Alphabet.scss';
-import '../../styles/styles.scss';
+import '../../assets/styles/styles.scss';
 
 class Alphabet extends Component {
   constructor(props) {

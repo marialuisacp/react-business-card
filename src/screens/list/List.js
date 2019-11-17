@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import './List.scss';
-import '../../styles/styles.scss';
+import '../../assets/styles/styles.scss';
 
 import Alphabet from '../../components/alphabet/Alphabet';
 import SwipeList from '../../components/swipeList/SwipeList';

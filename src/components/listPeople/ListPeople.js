@@ -4,7 +4,7 @@ import CardPerson from '../cardPerson/CardPerson';
 import { withRouter } from "react-router-dom";
 
 import './ListPeople.scss';
-import '../../styles/styles.scss';
+import '../../assets/styles/styles.scss';
 
 class ListPeople extends Component {
   constructor(props) {

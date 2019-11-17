@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import ListPeople from '../listPeople/ListPeople';
 
 import './SwipeList.scss';
-import '../../styles/styles.scss';
+import '../../assets/styles/styles.scss';
 
 class SwipeList extends Component {
   constructor(props) {

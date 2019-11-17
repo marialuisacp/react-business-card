@@ -2,8 +2,7 @@
 
 exports[`PeopleList Component PeopleList should render correctly 1`] = `
 <div
-  className="list-professionals"
-  id="list-people-component"
+  className="list-professionals list-people-component"
 >
   <div
     onClick={[Function]}

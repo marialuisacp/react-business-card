@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CardPerson from '../PersonCard/PersonCard';
+import PersonCard from '../PersonCard/PersonCard';
 import { withRouter } from "react-router-dom";
 
 import './PeopleList.scss';
@@ -28,11 +28,11 @@ class PeopleList extends Component {
       outlineCards.push({});
     };
     return (
-      <div className='list-professionals' id='list-people-component'>
+      <div className='list-professionals list-people-component'>
         {(data && data.length
-          && data.map((person, k) => (<div onClick={() => this.goToDetails(person)} key={k}><CardPerson person={person} /></div>))) || ''}
+          && data.map((person, k) => (<div onClick={() => this.goToDetails(person)} key={k}><PersonCard person={person} /></div>))) || ''}
         {(outlineCards && outlineCards.length
-          && outlineCards.map((person, k) => (<CardPerson key={k} person={person} />))) || ''}
+          && outlineCards.map((person, k) => (<PersonCard key={k} person={person} />))) || ''}
       </div >
     );
   }

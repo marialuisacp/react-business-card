@@ -23,6 +23,6 @@ jobs:
           command: npm run test
       - run:
           name: Firebase Deploy
-          command: firebase deploy --token "$FIREBASE_TOKEN" --only hosting
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
 
 

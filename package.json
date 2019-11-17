@@ -14,13 +14,15 @@
     "react-scripts": "3.2.0",
     "react-spring": "^7.1.0",
     "react-swipe": "^6.0.4",
+    "react-test-renderer": "^16.12.0",
     "redux": "^4.0.4"
   },
   "scripts": {
     "start": "http-server ./dist",
     "dev": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "lint": "eslint ./src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +39,12 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/files.js",
+      "\\.(css|scss)$": "<rootDir>/src/__mocks__/styles.js"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -49,8 +57,11 @@
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.5",
     "css-loader": "^3.2.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-react": "^7.16.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",

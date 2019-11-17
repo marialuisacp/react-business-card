@@ -70,8 +70,7 @@ module.exports = {
       filename: './index.html'
     }),
     new CopyWebpackPlugin([
-      { from: 'src/assets', to: 'assets' },
-      { from: 'docs/reports', to: 'reports' },
+      { from: 'src/assets', to: 'assets' }
     ]),
     new CleanWebpackPlugin(),
   ]

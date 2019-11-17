@@ -11,7 +11,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('SwipeList', () => {
-  it('Component SwipeList should render without crashing given the required props', () => {
+  test('Component SwipeList should render without crashing given the required props', () => {
     const props = {
       letterCenter: 'D',
       dispatch: jest.fn(),

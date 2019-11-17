@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { MemoryRouter as Router, withRouter } from 'react-router-dom'
+import { MemoryRouter as Router } from 'react-router-dom';
 
 import PeopleList from '../../components/PeopleList/PeopleList';
 

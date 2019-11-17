@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer';
 
 import { createLocation } from 'history';
 import { MemoryRouter as Router } from 'react-router-dom';
-// import { match as routerMatch } from 'react-router';
 
 import Detail from '../../screens/Detail/Detail';
 

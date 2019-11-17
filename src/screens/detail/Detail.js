@@ -6,7 +6,7 @@ import './Detail.scss';
 
 class Detail extends Component {
   goToBack = () => {
-    this.props.history.goBack();
+    this.props.history.push('/');
   }
 
   render() {
@@ -18,6 +18,11 @@ class Detail extends Component {
         office: '',
         imaeg: ''
       };
+
+    if (person && !person.name) {
+      this.goToBack();
+    }
+
     return (
       <div className='screen' id='detail-screen'>
         <div className='content'>

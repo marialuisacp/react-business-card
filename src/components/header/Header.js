@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <div id='header'>
         <div className='content'>
-          <img alt='Logo do projeto' src='images/logo.png' className='logo' />
+          <img alt='Logo do projeto' src='../../src/assets/images/logo.png' className='logo' />
         </div>
         <div className="lines">
           <div className='column column-border column-left'></div>

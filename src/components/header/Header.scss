@@ -4,7 +4,6 @@
   
   position: relative;
   width: 100%;
-  // z-index: 9;
 
   .logo {
     width: $logo-width;
@@ -29,7 +28,7 @@
     }
     .column-center {
       width: $column-center-width;
-      background-image: url(/images/lines.png);
+      background-image: url('../../assets/images/lines.png');
       background-repeat: no-repeat;
       background-size: 100%;
       background-position: center top;

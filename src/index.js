@@ -1,28 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/styles.scss';
-import * as serviceWorker from './serviceWorker';
+import { Router, Route, Switch } from "react-router-dom";
 
 import List from './screens/list/List';
 import Detail from './screens/detail/Detail';
-import { HashRouter, Route, Switch } from "react-router-dom";
 
 import { Provider } from 'react-redux';
 import { Store } from './store';
 
 import { createBrowserHistory } from 'history';
 
+import './styles/styles.scss';
+
 const history = createBrowserHistory();
 
-ReactDOM.render(
+const App = () => (
   <Provider store={Store}>
-    <HashRouter basename='/' history={history}>
+    <Router basename='/' history={history}>
       <Switch>
         <Route exact path="/" component={List} />
         <Route path="/detail" component={Detail} />
       </Switch>
-    </HashRouter>
+    </Router>
   </Provider>
-  , document.getElementById('root'));
+);
 
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.getElementById('root'));

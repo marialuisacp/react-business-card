@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import './List.scss';
 import '../../styles/styles.scss';
-import '../../styles/lib/react-carousel.es.css';
+
 import Alphabet from '../../components/alphabet/Alphabet';
 import SwipeList from '../../components/swipeList/SwipeList';
 import { dataPeople } from '../../utils';

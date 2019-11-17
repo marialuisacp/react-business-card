@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail Screen Detail should render correctly 1`] = `
+<div
+  className="screen"
+  id="detail-screen"
+>
+  <div
+    className="content"
+  >
+    <div
+      className="btn-back"
+      onClick={[Function]}
+    />
+    <div
+      className="info"
+    >
+      <div
+        className="avatar"
+      >
+        <img
+          alt="Foto do profissional"
+        />
+      </div>
+      <p
+        className="title"
+      >
+        
+      </p>
+      <p>
+        
+      </p>
+    </div>
+    <div
+      className="card-company"
+    >
+      <div
+        className="info-superior"
+      >
+        <div
+          className="logo"
+        >
+          <img
+            alt="logo da empresa"
+            src="./assets/images/logo.png"
+          />
+        </div>
+        <div
+          className="phones"
+        >
+          <p>
+             31 | 9.9147-8701 
+          </p>
+          <p>
+             31 | 9.9147-2020 
+          </p>
+        </div>
+      </div>
+      <div
+        className="info-inferior"
+      >
+        <p>
+           
+          
+           
+        </p>
+        <div
+          className="line"
+        />
+      </div>
+    </div>
+    <div
+      className="card-qrcode"
+    >
+      <img
+        alt="qrcode"
+        src="./assets/images/qrcode.png"
+      />
+    </div>
+  </div>
+</div>
+`;

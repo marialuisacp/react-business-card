@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 import List from './screens/List/List';
 import Detail from './screens/Detail/Detail';
@@ -16,12 +16,12 @@ const history = createBrowserHistory();
 
 const App = () => (
   <Provider store={Store}>
-    <Router basename='/' history={history}>
+    <HashRouter basename='/' history={history}>
       <Switch>
         <Route exact path="/" component={List} />
         <Route path="/detail" component={Detail} />
       </Switch>
-    </Router>
+    </HashRouter>
   </Provider>
 );
 

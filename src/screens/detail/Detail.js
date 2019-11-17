@@ -9,6 +9,14 @@ class Detail extends Component {
     this.props.history.push('/');
   }
 
+  componentWillMount() {
+    const hasParam = (this.props.location.state && this.props.location.state.data);
+
+    if (!hasParam) {
+      this.goToBack();
+    }
+  };
+
   render() {
     const person = (this.props.location.state && this.props.location.state.data)
       ? this.props.location.state.data
@@ -18,10 +26,6 @@ class Detail extends Component {
         office: '',
         imaeg: ''
       };
-
-    if (person && !person.name) {
-      this.goToBack();
-    }
 
     return (
       <div className='screen' id='detail-screen'>

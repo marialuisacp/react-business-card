@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CardPerson from '../cardPerson/CardPerson';
+import { withRouter } from "react-router-dom";
 
 import './ListPeople.scss';
 import '../../styles/styles.scss';
 
 class ListPeople extends Component {
+  constructor(props) {
+    super(props);
+    this.goToDetails = this.goToDetails.bind(this);
+  }
+
+  goToDetails = (data) => {
+    this.props.history.push({
+      pathname: '/detail',
+      state: { data: data }
+    });
+  }
 
   render() {
     const { data } = this.props;
@@ -18,7 +30,7 @@ class ListPeople extends Component {
     return (
       <div className='list-professionals' id='list-people-component'>
         {(data && data.length
-          && data.map((person, k) => (<CardPerson key={k} person={person} />))) || ''}
+          && data.map((person, k) => (<div onClick={() => this.goToDetails(person)} key={k}><CardPerson person={person} /></div>))) || ''}
         {(outlineCards && outlineCards.length
           && outlineCards.map((person, k) => (<CardPerson key={k} person={person} />))) || ''}
       </div >
@@ -30,4 +42,4 @@ ListPeople.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default ListPeople;
+export default withRouter(ListPeople);

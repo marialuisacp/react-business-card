@@ -12,14 +12,14 @@ import { Store } from './store';
 
 import { createBrowserHistory } from 'history';
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 
 ReactDOM.render(
   <Provider store={Store}>
     <HashRouter basename='/' history={history}>
       <Switch>
         <Route exact path="/" component={List} />
-        <Route path="/letter" component={Detail} />
+        <Route path="/detail" component={Detail} />
       </Switch>
     </HashRouter>
   </Provider>

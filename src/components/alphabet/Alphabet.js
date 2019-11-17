@@ -87,7 +87,6 @@ class Alphabet extends Component {
   componentDidUpdate(prevProps) {
     const { letterCenter: letter, direction: lastDirection } = this.props;
     if (prevProps.letterCenter !== letter) {
-      console.log('trocou');
       if (lastDirection === 1) {
         this.handleNext();
       } else if (lastDirection === -1) {

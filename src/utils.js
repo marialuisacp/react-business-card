@@ -4,7 +4,8 @@ const data = [
     people: [{
       name: 'Danilo Rocha',
       office: 'Desenvolvedor',
-      image: '/images/people/d01.jpg'
+      image: '/images/people/d01.jpg',
+      email: 'danilo.rocha@mundiale.com'
     }]
   },
   {
@@ -12,7 +13,8 @@ const data = [
     people: [{
       name: 'Eduardo Viana',
       office: 'UX Designer',
-      image: '/images/people/e01.jpg'
+      image: '/images/people/e01.jpg',
+      email: 'eduardo.viana@mundiale.com'
     }]
   },
   {
@@ -20,7 +22,8 @@ const data = [
     people: [{
       name: 'Grabriela Duarte',
       office: 'UX Writer',
-      image: '/images/people/g01.jpg'
+      image: '/images/people/g01.jpg',
+      email: 'gabriela.duarte@mundiale.com'
     }]
   },
   {
@@ -28,12 +31,14 @@ const data = [
     people: [{
       name: 'Jorge Manuel',
       office: 'Fotógrafo',
-      image: '/images/people/j01.jpg'
+      image: '/images/people/j01.jpg',
+      email: 'jorge.manuel@mundiale.com'
     },
     {
       name: 'Janaína Andrade',
       office: 'Desenvolvedora',
-      image: '/images/people/j02.jpg'
+      image: '/images/people/j02.jpg',
+      email: 'jana.andrade@mundiale.com'
     }]
   },
   {
@@ -49,12 +54,14 @@ const data = [
     people: [{
       name: 'Pâmela Carmen Lima',
       office: 'Auxiliar administrativo',
-      image: '/images/people/p01.jpg'
+      image: '/images/people/p01.jpg',
+      email: 'pamela.lima@mundiale.com'
     },
     {
       name: 'Pedro Souza Gomes',
       office: 'Auxiliar de qualidae',
-      image: '/images/people/p02.jpg'
+      image: '/images/people/p02.jpg',
+      email: 'pedro.souza@mundiale.com'
     }]
   }
 ];

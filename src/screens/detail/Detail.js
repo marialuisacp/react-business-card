@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { withRouter } from "react-router-dom";
 
 import '../../styles/styles.scss';
 import './Detail.scss';
 
 class Detail extends Component {
+  goToBack = () => {
+    this.props.history.goBack();
+  }
+
   render() {
+    const person = (this.props.location.state && this.props.location.state.data)
+      ? this.props.location.state.data
+      : {
+        name: '',
+        email: '',
+        office: '',
+        imaeg: ''
+      };
     return (
       <div className='screen' id='detail-screen'>
         <div className='content'>
-          <div className='btn-back'></div>
+          <div className='btn-back' onClick={this.goToBack}></div>
           <div className='info'>
             <div className='avatar'>
-              <img alt='Foto do profissional' src='/images/people/d01.jpg' />
+              <img alt='Foto do profissional' src={person.image} />
             </div>
             <p className='title'>
-              Eduardo Viana
+              {person.name}
             </p>
             <p>
-              UX Designer
+              {person.office}
             </p>
           </div>
-
           <div className='card-company'>
             <div className='info-superior'>
               <div className='logo'>
@@ -33,11 +44,10 @@ class Detail extends Component {
               </div>
             </div>
             <div className='info-inferior'>
-              <p> eduardo.viana@mundiale.com.br</p>
+              <p> {person.email} </p>
               <div className='line'></div>
             </div>
           </div>
-
           <div className='card-qrcode'>
             <img alt='qrcode' src='/images/qrcode.png' />
           </div>
@@ -47,9 +57,4 @@ class Detail extends Component {
   }
 }
 
-Detail.propTypes = {
-  t: PropTypes.func.isRequired,
-  classes: PropTypes.object
-};
-
-export default Detail;
+export default withRouter(Detail);

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonCard Component PersonCard should render correctly 1`] = `
+<div
+  className="card-person card-info"
+>
+  <div
+    className="circle"
+  />
+  <div
+    className="card outline"
+  />
+</div>
+`;
